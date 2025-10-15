@@ -65,7 +65,7 @@ const MenuItemCard = React.forwardRef<HTMLDivElement, MenuItemCardProps>(
       <motion.div
         ref={ref}
         className={cn(
-          "relative flex flex-col w-full max-w-sm overflow-hidden rounded-xl border bg-white dark:bg-slate-800 text-gray-900 dark:text-white shadow-sm hover:shadow-md dark:hover:shadow-slate-900/50 transition-all group border-gray-200 dark:border-slate-700",
+          "relative flex flex-col w-full max-w-sm overflow-hidden rounded-xl border bg-white dark:bg-slate-800 text-gray-900 dark:text-white shadow-sm hover:shadow-md dark:hover:shadow-slate-900/50 transition-all group border-gray-200 dark:border-slate-700 h-full",
           className
         )}
         variants={cardVariants}
@@ -123,15 +123,18 @@ const MenuItemCard = React.forwardRef<HTMLDivElement, MenuItemCardProps>(
           )}
 
           {/* Item Name */}
-          <h3 className="text-lg font-semibold leading-tight text-gray-900 dark:text-white mb-2 font-serif">
+          <h3 className="text-lg font-semibold leading-tight text-gray-900 dark:text-white mb-2 font-serif line-clamp-2">
             {highlightText(name)}
           </h3>
 
           {/* Description */}
           {description && (
-            <p className="text-sm text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
+            <p className="text-sm text-gray-600 dark:text-gray-300 mb-3 leading-relaxed line-clamp-3">
               {highlightText(description)}
             </p>
+          )}
+          {!description && (
+            <div className="h-[3.75rem] mb-3" />
           )}
 
           {/* Badges */}
