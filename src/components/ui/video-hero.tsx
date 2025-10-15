@@ -140,11 +140,17 @@ export function VideoHero() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="absolute inset-0"
+            className="absolute inset-0 overflow-hidden"
           >
             <video
               ref={videoRef}
-              className="absolute top-0 left-0 w-full h-full object-cover"
+              className="absolute w-full h-full"
+              style={{
+                objectFit: 'cover',
+                objectPosition: 'center center',
+                minWidth: '100%',
+                minHeight: '100%',
+              }}
               autoPlay
               muted
               loop={videosToPlay.length === 1}
