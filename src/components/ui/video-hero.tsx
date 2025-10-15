@@ -144,7 +144,10 @@ export function VideoHero() {
           >
             <video
               ref={videoRef}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-w-full min-h-full w-auto h-auto max-w-none"
+              className="absolute inset-0 w-full h-full md:object-cover object-contain md:object-center"
+              style={{
+                objectPosition: 'center center',
+              }}
               autoPlay
               muted
               loop={videosToPlay.length === 1}
