@@ -140,19 +140,22 @@ export default function SpeisekartePage() {
       .filter((category) => category.items.length > 0);
   }, [categories, searchTerm, selectedFilters]);
 
-  // Auto-expand categories when searching
+  // Auto-expand categories ONCE when starting to search (not on every change)
   useEffect(() => {
-    if (searchTerm || selectedFilters.length > 0) {
-      // Expand all categories that have matching items
+    const hasActiveSearch = searchTerm || selectedFilters.length > 0;
+
+    if (hasActiveSearch && expandedCategories.size === 0) {
+      // Only expand if currently nothing is expanded
       const categoriesToExpand = new Set<number>();
       filteredCategories.forEach((category) => {
-        if (category.items.length > 0) {
-          categoriesToExpand.add(category.id);
-        }
+        categoriesToExpand.add(category.id);
       });
       setExpandedCategories(categoriesToExpand);
+    } else if (!hasActiveSearch) {
+      // Close all when search is cleared
+      setExpandedCategories(new Set());
     }
-  }, [searchTerm, selectedFilters, filteredCategories]);
+  }, [searchTerm, selectedFilters.length]); // Don't depend on filteredCategories!
 
   const toggleFilter = (filter: string) => {
     setSelectedFilters((prev) =>
