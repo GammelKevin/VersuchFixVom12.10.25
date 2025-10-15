@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: restaurant-alas
+    env: node
+    region: frankfurt
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_PUBLIC_BASE_URL
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+    healthCheckPath: /
