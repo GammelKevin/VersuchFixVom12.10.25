@@ -144,7 +144,7 @@ export function VideoHero() {
           >
             <video
               ref={videoRef}
-              className="absolute inset-0 w-full h-full md:object-cover object-contain md:object-center"
+              className="absolute inset-0 w-full h-full object-cover"
               style={{
                 objectPosition: 'center center',
               }}
