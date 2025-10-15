@@ -222,32 +222,32 @@ export function OpeningHours() {
   }
 
   return (
-    <section id="hours" className="py-20 bg-gray-900 text-white">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="hours" className="py-12 sm:py-16 md:py-20 bg-gray-900 text-white">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-12 md:mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-3xl md:text-5xl font-bold font-serif mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-serif mb-3 sm:mb-4 px-2">
             Öffnungszeiten
           </h2>
-          <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto px-2 leading-relaxed">
             Wir freuen uns auf Ihren Besuch! Reservierungen sind empfohlen.
           </p>
         </motion.div>
 
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12">
             {/* Opening Hours Card */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="bg-gray-800 rounded-2xl p-8"
+              className="bg-gray-800 rounded-2xl p-5 sm:p-6 md:p-8"
             >
               {/* Vacation Mode - Replaces Opening Hours */}
               {vacation?.is_active && vacation.start_date && vacation.end_date ? (
@@ -304,14 +304,14 @@ export function OpeningHours() {
               ) : (
                 <>
                   {/* Normal Opening Hours */}
-                  <div className="flex items-center mb-8">
-                    <Clock className="w-8 h-8 text-blue-400 mr-4" />
-                    <h3 className="text-2xl font-bold font-serif">
+                  <div className="flex items-center mb-6 sm:mb-8">
+                    <Clock className="w-6 h-6 sm:w-8 sm:h-8 text-blue-400 mr-3 sm:mr-4 flex-shrink-0" />
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold font-serif">
                       Unsere Öffnungszeiten
                     </h3>
                   </div>
 
-                  <div className="space-y-4">
+                  <div className="space-y-2 sm:space-y-3 md:space-y-4">
                     {hours.map((hour) => {
                       const isToday = hour.day === currentDay;
                       const timeString = formatTimeString(hour);
@@ -320,24 +320,24 @@ export function OpeningHours() {
                       return (
                         <div
                           key={hour.id}
-                          className={`flex justify-between items-center py-3 px-4 rounded-lg transition-colors duration-300 ${
+                          className={`flex justify-between items-center py-2 sm:py-3 px-3 sm:px-4 rounded-lg transition-colors duration-300 ${
                             isToday
                               ? "bg-blue-600/20 border border-blue-500/30"
                               : "hover:bg-gray-700/50"
                           }`}
                         >
                           <span
-                            className={`font-semibold ${isToday ? "text-blue-300" : "text-white"}`}
+                            className={`font-semibold text-sm sm:text-base ${isToday ? "text-blue-300" : "text-white"}`}
                           >
                             {hour.day}
                             {isToday && (
-                              <span className="ml-2 text-xs text-blue-400">
+                              <span className="ml-1 sm:ml-2 text-xs text-blue-400">
                                 (Heute)
                               </span>
                             )}
                           </span>
                           <span
-                            className={isClosed ? "text-red-400" : "text-gray-300"}
+                            className={`text-sm sm:text-base ${isClosed ? "text-red-400" : "text-gray-300"}`}
                           >
                             {timeString}
                           </span>
@@ -363,24 +363,24 @@ export function OpeningHours() {
 
             {/* Contact Info Card */}
             <motion.div
-              className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl p-8"
+              className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl p-5 sm:p-6 md:p-8"
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h3 className="text-2xl font-bold font-serif mb-8">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold font-serif mb-6 sm:mb-8">
                 Reservierung & Kontakt
               </h3>
 
-              <div className="space-y-6">
+              <div className="space-y-5 sm:space-y-6">
                 <div className="flex items-start">
-                  <Phone className="w-6 h-6 mt-1 mr-4 flex-shrink-0" />
+                  <Phone className="w-5 h-5 sm:w-6 sm:h-6 mt-1 mr-3 sm:mr-4 flex-shrink-0" />
                   <div>
-                    <p className="font-semibold mb-1">Telefon</p>
+                    <p className="font-semibold mb-1 text-sm sm:text-base">Telefon</p>
                     <a
                       href={`tel:${settings.contact_phone_formatted}`}
-                      className="text-blue-100 hover:text-white transition-colors duration-300"
+                      className="text-blue-100 hover:text-white active:text-white transition-colors duration-300 text-sm sm:text-base touch-manipulation"
                     >
                       {settings.contact_phone}
                     </a>
@@ -388,10 +388,10 @@ export function OpeningHours() {
                 </div>
 
                 <div className="flex items-start">
-                  <MapPin className="w-6 h-6 mt-1 mr-4 flex-shrink-0" />
+                  <MapPin className="w-5 h-5 sm:w-6 sm:h-6 mt-1 mr-3 sm:mr-4 flex-shrink-0" />
                   <div>
-                    <p className="font-semibold mb-1">Adresse</p>
-                    <p className="text-blue-100">
+                    <p className="font-semibold mb-1 text-sm sm:text-base">Adresse</p>
+                    <p className="text-blue-100 text-sm sm:text-base leading-relaxed">
                       {settings.contact_address_street}
                       <br />
                       {settings.contact_address_city}
@@ -400,15 +400,15 @@ export function OpeningHours() {
                 </div>
               </div>
 
-              <div className="mt-8 pt-8 border-t border-blue-500/30">
-                <h4 className="font-semibold mb-4">Reservierung empfohlen</h4>
-                <p className="text-blue-100 mb-6">
+              <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-blue-500/30">
+                <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Reservierung empfohlen</h4>
+                <p className="text-blue-100 mb-5 sm:mb-6 text-sm sm:text-base leading-relaxed">
                   Sichern Sie sich Ihren Platz in unserem beliebten Restaurant.
                   Wir freuen uns auf Ihren Besuch!
                 </p>
                 <a
                   href={`tel:${settings.contact_phone_formatted}`}
-                  className="inline-block w-full py-3 px-6 bg-white text-blue-700 rounded-lg font-semibold text-center hover:bg-gray-100 transition-colors duration-300"
+                  className="inline-block w-full py-2.5 sm:py-3 px-5 sm:px-6 bg-white text-blue-700 rounded-lg font-semibold text-center hover:bg-gray-100 active:bg-gray-200 transition-colors duration-300 touch-manipulation text-sm sm:text-base"
                 >
                   Jetzt reservieren
                 </a>

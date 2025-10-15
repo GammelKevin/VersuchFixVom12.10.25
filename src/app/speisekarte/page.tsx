@@ -256,16 +256,16 @@ export default function SpeisekartePage() {
   return (
     <>
       <Navigation />
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white dark:from-slate-900 dark:to-slate-800 pt-20 transition-colors">
-        <div className="container mx-auto px-4 md:px-6 py-8">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white dark:from-slate-900 dark:to-slate-800 pt-14 sm:pt-16 md:pt-20 transition-colors">
+        <div className="container mx-auto px-3 sm:px-4 md:px-6 py-6 sm:py-8">
           {/* Header */}
           <motion.div
-            className="text-center mb-8"
+            className="text-center mb-6 sm:mb-8"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-3xl md:text-5xl font-bold font-serif text-gray-900 dark:text-white mb-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-serif text-gray-900 dark:text-white mb-3 sm:mb-4 px-2">
               Unsere Speisekarte
             </h1>
           </motion.div>
@@ -275,30 +275,31 @@ export default function SpeisekartePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="max-w-3xl mx-auto mb-8"
+            className="max-w-3xl mx-auto mb-6 sm:mb-8"
           >
-            <div className="relative mb-6">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+            <div className="relative mb-4 sm:mb-6">
+              <Search className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 sm:w-5 sm:h-5" />
               <input
                 type="text"
-                placeholder="Suchen Sie nach Gerichten, Zutaten oder Beschreibungen..."
+                placeholder="Suchen Sie nach Gerichten..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-12 py-4 border border-gray-200 dark:border-gray-600 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white dark:bg-slate-800 text-gray-900 dark:text-white shadow-sm hover:shadow-md dark:shadow-slate-900/20"
+                className="w-full pl-10 sm:pl-12 pr-10 sm:pr-12 py-3 sm:py-4 border border-gray-200 dark:border-gray-600 rounded-xl sm:rounded-2xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white dark:bg-slate-800 text-gray-900 dark:text-white shadow-sm hover:shadow-md dark:shadow-slate-900/20 text-sm sm:text-base"
               />
               {(searchTerm || selectedFilters.length > 0) && (
                 <button
                   onClick={clearSearch}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors p-1 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700"
+                  className="absolute right-3 sm:right-4 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 active:text-gray-700 dark:active:text-gray-200 transition-colors p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 touch-manipulation"
                   title="Suche zurücksetzen"
+                  aria-label="Suche zurücksetzen"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
               )}
             </div>
 
             {/* Quick Filters */}
-            <div className="flex flex-wrap justify-center gap-2">
+            <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2">
               {[
                 { key: "vegetarian", label: "Vegetarisch", emoji: "🥕" },
                 { key: "vegan", label: "Vegan", emoji: "🌱" },
@@ -312,7 +313,7 @@ export default function SpeisekartePage() {
                   onClick={() => toggleFilter(filter.key)}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`px-3 py-2 rounded-full text-sm font-medium transition-all ${
+                  className={`px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all touch-manipulation ${
                     selectedFilters.includes(filter.key)
                       ? "bg-blue-500 text-white shadow-lg"
                       : "bg-white dark:bg-slate-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500 hover:shadow-md"
@@ -398,37 +399,37 @@ export default function SpeisekartePage() {
                     {/* Category Header */}
                     <button
                       onClick={() => hasItems && toggleCategory(category.id)}
-                      className={`w-full px-6 py-4 text-left focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-inset ${
+                      className={`w-full px-4 sm:px-5 md:px-6 py-3 sm:py-4 text-left focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-inset touch-manipulation ${
                         hasItems
-                          ? "hover:bg-gray-50 dark:hover:bg-slate-700 cursor-pointer"
+                          ? "hover:bg-gray-50 dark:hover:bg-slate-700 active:bg-gray-100 dark:active:bg-slate-600 cursor-pointer"
                           : "cursor-default"
                       } transition-colors duration-200`}
                       disabled={!hasItems}
                     >
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <h2 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white font-serif">
+                      <div className="flex items-center justify-between gap-3">
+                        <div className="flex-1 min-w-0">
+                          <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 dark:text-white font-serif">
                             {category.display_name || category.name}
                           </h2>
                           {category.description && (
-                            <p className="text-gray-600 dark:text-gray-300 mt-1">
+                            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mt-1 leading-relaxed">
                               {category.description}
                             </p>
                           )}
                         </div>
 
-                        <div className="flex items-center space-x-2">
+                        <div className="flex items-center space-x-2 flex-shrink-0">
                           {!hasItems && (
-                            <span className="text-sm text-gray-400 dark:text-gray-500">
-                              Keine Artikel in dieser Kategorie gefunden.
+                            <span className="hidden sm:inline text-sm text-gray-400 dark:text-gray-500">
+                              Keine Artikel
                             </span>
                           )}
                           {hasItems && (
                             <div className="flex items-center">
                               {isExpanded ? (
-                                <ChevronUp className="w-5 h-5 text-gray-500 dark:text-gray-400" />
+                                <ChevronUp className="w-5 h-5 sm:w-6 sm:h-6 text-gray-500 dark:text-gray-400" />
                               ) : (
-                                <ChevronDown className="w-5 h-5 text-gray-500 dark:text-gray-400" />
+                                <ChevronDown className="w-5 h-5 sm:w-6 sm:h-6 text-gray-500 dark:text-gray-400" />
                               )}
                             </div>
                           )}
@@ -446,8 +447,8 @@ export default function SpeisekartePage() {
                           transition={{ duration: 0.3 }}
                           className="border-t border-gray-200 dark:border-slate-600"
                         >
-                          <div className="px-6 py-6">
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                          <div className="px-3 sm:px-4 md:px-6 py-4 sm:py-5 md:py-6">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
                               {category.items.map((item) => (
                                 <MenuItemCard
                                   key={item.id}

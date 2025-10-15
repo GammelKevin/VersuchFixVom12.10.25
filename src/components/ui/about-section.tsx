@@ -70,35 +70,35 @@ export function AboutSection() {
   };
 
   return (
-    <section id="about" className="py-20 bg-gradient-to-b from-gray-50 to-white">
-      <div className="container mx-auto px-4 md:px-6">
-        <motion.div 
-          className="text-center mb-16"
+    <section id="about" className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-gray-50 to-white">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8">
+        <motion.div
+          className="text-center mb-10 sm:mb-12 md:mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-3xl md:text-5xl font-bold font-serif text-gray-900 mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-serif text-gray-900 mb-3 sm:mb-4 px-2">
             {settings.about_title}
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-2">
             {settings.about_description}
           </p>
-          
+
           <motion.button
             onClick={() => setIsFamilyStoryOpen(true)}
-            className="mt-6 inline-flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-all duration-200 font-medium group"
+            className="mt-5 sm:mt-6 inline-flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white rounded-lg transition-all duration-200 font-medium group touch-manipulation text-sm sm:text-base"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             <span>Unsere Familiengeschichte</span>
-            <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 transform group-hover:translate-x-1 transition-transform" />
           </motion.button>
         </motion.div>
 
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -110,42 +110,44 @@ export function AboutSection() {
               variants={itemVariants}
               className="text-center group"
             >
-              <div className="bg-blue-100 rounded-full w-20 h-20 mx-auto mb-6 flex items-center justify-center text-blue-600 group-hover:bg-blue-200 transition-colors duration-300">
-                {feature.icon}
+              <div className="bg-blue-100 rounded-full w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 flex items-center justify-center text-blue-600 group-hover:bg-blue-200 transition-colors duration-300">
+                <div className="scale-90 sm:scale-100">
+                  {feature.icon}
+                </div>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-3 px-2">
                 {feature.title}
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed px-2">
                 {feature.description}
               </p>
             </motion.div>
           ))}
         </motion.div>
 
-        <motion.div 
-          className="mt-16 bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-8 md:p-12 text-white text-center"
+        <motion.div
+          className="mt-10 sm:mt-12 md:mt-16 bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-6 sm:p-8 md:p-12 text-white text-center"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          <h3 className="text-2xl md:text-3xl font-bold mb-4 font-serif">
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 font-serif">
             Lokal des Jahres 2024
           </h3>
-          <p className="text-lg md:text-xl mb-6 opacity-90">
+          <p className="text-base sm:text-lg md:text-xl mb-5 sm:mb-6 opacity-90 leading-relaxed px-2">
             Stolz darauf, als bestes griechisches Restaurant in Deutschland ausgezeichnet zu werden!
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="#menu" 
-              className="px-8 py-3 bg-white text-blue-700 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300"
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center max-w-md sm:max-w-none mx-auto">
+            <a
+              href="#menu"
+              className="px-6 py-2.5 sm:px-8 sm:py-3 bg-white text-blue-700 rounded-full font-semibold hover:bg-gray-100 active:bg-gray-200 transition-colors duration-300 touch-manipulation text-sm sm:text-base"
             >
               Unsere Speisekarte
             </a>
-            <a 
-              href="#contact" 
-              className="px-8 py-3 border-2 border-white text-white rounded-full font-semibold hover:bg-white/10 transition-colors duration-300"
+            <a
+              href="#contact"
+              className="px-6 py-2.5 sm:px-8 sm:py-3 border-2 border-white text-white rounded-full font-semibold hover:bg-white/10 active:bg-white/20 transition-colors duration-300 touch-manipulation text-sm sm:text-base"
             >
               Kontakt & Reservierung
             </a>
